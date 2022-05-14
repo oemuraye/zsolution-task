@@ -1,0 +1,48 @@
+
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #131921;
+  position: sticky;
+  padding: 0 20px;
+  top: 0;
+  z-index: 100;
+}
+.header__name {
+    display: flex;
+    color: #fff;
+}
+.header__logo {
+  /* width: 100px; */
+    object-fit: contain;
+    margin-right: 10px;
+    height: 50px;
+}
+.header__motto p,
+.header__motto h3 {
+    padding: 0;
+    margin: 0;
+}
+.header__motto p {
+    font-size: 10px;
+    color: #00ff59c1;
+}
+.header__nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+}
+.header__optionLineOne {
+  font-size: 10px;
+}
+.header__nav a {
+  text-decoration: none;
+}
