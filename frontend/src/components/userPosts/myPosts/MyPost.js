@@ -1,21 +1,15 @@
-import { Button, CardMedia, Grid, Card, CardActions, Typography, CardContent,} from '@mui/material';
-import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import { Button, CardMedia, Grid, Card, CardActions, Typography, CardContent, Container, } from "@mui/material";
 
-import image from '../../../images/car1.jpg'
-import './Product.css'
-
-const Product = () => {
+import image from "../../../images/car1.jpg";
+import './MyPosts.css'
+const MyPost = () => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="product-img"
-        height="140"
-        image={image}
-      />
+    <div className="my__post">
+      <Card sx={{ maxWidth: 345 }} >
+      <CardMedia component="img" alt="product-img" height="140" image={image} />
       <CardContent>
         <Grid container>
-          <Grid item xs={4} >
+          <Grid item xs={4}>
             <Typography gutterBottom variant="h5" component="div">
               Lizard
             </Typography>
@@ -32,16 +26,13 @@ const Product = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" size="small">
-          Buy Now
-        </Button>
-        <Button variant='outlined'>
-          <Typography variant='body2'>View</Typography>
-          <ReadMoreIcon />
+        <Button variant="contained" sx={{ bgcolor: "error.main" }} size="small">
+          Delete
         </Button>
       </CardActions>
     </Card>
+    </div>
   );
 }
 
-export default Product
+export default MyPost
