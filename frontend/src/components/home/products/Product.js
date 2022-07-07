@@ -3,19 +3,15 @@ import ReadMoreIcon from '@mui/icons-material/ReadMore';
 
 import image from '../../../images/car1.jpg'
 import './Product.css'
+import { Link } from 'react-router-dom';
 
 const Product = () => {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="product-img"
-        height="140"
-        image={image}
-      />
+      <CardMedia component="img" alt="product-img" height="140" image={image} />
       <CardContent>
         <Grid container>
-          <Grid item xs={4} >
+          <Grid item xs={4}>
             <Typography gutterBottom variant="h5" component="div">
               Lizard
             </Typography>
@@ -32,13 +28,15 @@ const Product = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" size="small">
+        <Button variant="contained" sx={{ p: 1, pl: 2, pr: 2 }} size='small'  >
           Buy Now
         </Button>
-        <Button variant='outlined'>
-          <Typography variant='body2'>View</Typography>
-          <ReadMoreIcon />
-        </Button>
+          <Link to="/details">
+            <Button variant="outlined" size='large' sx={{ml: 2}}>
+              <Typography variant="body2">View</Typography>
+              <ReadMoreIcon />
+            </Button>
+          </Link>
       </CardActions>
     </Card>
   );

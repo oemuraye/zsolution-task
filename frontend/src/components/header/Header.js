@@ -1,19 +1,23 @@
 // import { useStateValue } from '../StateProvider';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as actionType from '../constants/actionTypes';
 
 import './Header.css'
 import { Link } from "react-router-dom";
 import appLogo from '../../images/logo.jpg'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import decode from "jwt-decode";
 
 const Header = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
+  // const users = useSelector((state) => state.user);
+  console.log(user);
+  
   const handleAuthentication = () => {
     if (user) {
       dispatch({ type: actionType.LOGOUT });
@@ -21,6 +25,10 @@ const Header = () => {
       setUser(null);
     }
   }
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
 
   return (
     <div className="header">

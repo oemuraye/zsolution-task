@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -23,26 +23,33 @@ const initialState = { firstName: '', lastName: '', email: '', password: '' };
 const Login = () => {
   const theme = createTheme();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const [form, setForm] = useState(initialState)
+  const navigate = useNavigate();
+  // const location = useLocation();
+  const [formData, setFormData] = useState(initialState)
   const [isSignup, setIsSignup] = useState(false)
+  
+  // const [ user, setUser ] = useState(null)
 
   const switchMode = () => {
-    setForm(initialState);
+    setFormData(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (isSignup) {
-      dispatch(signup(form, navigate('/')));
+      dispatch(signup(formData, navigate('/')));
     } else {
-      dispatch(signin(form, navigate('/')));
+      dispatch(signin(formData, navigate('/')));
     }
-    
   };
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  // useEffect(() => {
+  //   setUser(JSON.parse(localStorage.getItem("profile")));
+  // }, [location])
+  
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
 
   return (

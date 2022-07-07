@@ -2,7 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 
 import "./Home.css";
 import Product from "./products/Product";
-import Image from '../../images/car-cover1.jpg'
+// import Image from '../../images/car-cover1.jpg'
 
 const Home = () => {
   return (
