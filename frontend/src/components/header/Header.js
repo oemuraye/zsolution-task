@@ -1,4 +1,4 @@
-// import { useStateValue } from '../StateProvider';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as actionType from '../constants/actionTypes';
@@ -6,17 +6,20 @@ import * as actionType from '../constants/actionTypes';
 import './Header.css'
 import { Link } from "react-router-dom";
 import appLogo from '../../images/logo.jpg'
-import { useEffect, useState } from 'react';
 // import decode from "jwt-decode";
 
 const Header = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
-  // const users = useSelector((state) => state.user);
-  console.log(user);
+  const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('profile')))
+  
+  // console.log(user);
+  // console.log(location);
+  
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
   
   const handleAuthentication = () => {
     if (user) {
@@ -26,9 +29,6 @@ const Header = () => {
     }
   }
 
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
 
   return (
     <div className="header">

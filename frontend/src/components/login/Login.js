@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
 import Avatar from "@mui/material/Avatar";
@@ -18,18 +18,14 @@ import "./Login.css";
 
 const initialState = { firstName: '', lastName: '', email: '', password: '' };
 
-
-
 const Login = () => {
   const theme = createTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const location = useLocation();
   const [formData, setFormData] = useState(initialState)
   const [isSignup, setIsSignup] = useState(false)
+  const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('profile')))
   
-  // const [ user, setUser ] = useState(null)
-
   const switchMode = () => {
     setFormData(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -43,14 +39,8 @@ const Login = () => {
       dispatch(signin(formData, navigate('/')));
     }
   };
-
-  // useEffect(() => {
-  //   setUser(JSON.parse(localStorage.getItem("profile")));
-  // }, [location])
   
-
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
 
   return (
     <ThemeProvider theme={theme}>
